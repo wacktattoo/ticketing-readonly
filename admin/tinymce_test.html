@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<textarea id="x">Ahoj TinyMCE</textarea>
+
+<!-- JEDINÝ skript – z tvého self-host umístění -->
+<script src="/assets/tinymce/tinymce.min.js"></script>
+<script>
+  // Řekni TinyMCE, kde leží skins/plugins/themes/icons
+  tinymce.baseURL = '/assets/tinymce';  // <- DŮLEŽITÉ: přesně tento kořen
+  // nedávej language, dokud nemáš /assets/tinymce/langs/cs.js
+
+  // Pro jistotu zruš případné předešlé instance
+  if (tinymce && tinymce.editors && tinymce.editors.length) {
+    tinymce.remove();
+  }
+
+  // Minimální init – bez pluginů, bez toolbaru
+  tinymce.init({
+    selector: '#x',
+    suffix: '.min',      // používáme minifikované soubory
+    menubar: false,
+    branding: false,
+    height: 300
+  });
+</script>

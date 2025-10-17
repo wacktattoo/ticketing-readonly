@@ -1,0 +1,70 @@
+</main>
+<script src="/assets/tinymce7/tinymce.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  tinymce.remove(); // pro jistotu
+
+  tinymce.init({
+    selector: '#desc-editor',
+    height: 480,
+    branding: false,
+    menubar: 'file edit view insert format tools table help',
+    // self-host cesty
+    base_url: '/assets/tinymce7',
+    suffix: '.min',
+    theme: 'silver',
+    skin: 'oxide',
+    skin_url: '/assets/tinymce7/skins/ui/oxide',
+    icons: 'default',
+    icons_url: '/assets/tinymce7/icons/default/icons.min.js',
+    model: 'dom',
+    model_url: '/assets/tinymce7/models/dom/model.min.js',
+    content_css: '/assets/tinymce7/skins/content/default/content.min.css',
+
+    /* Pluginy – přidej/uber dle potřeby (soubor musí existovat v /plugins/...) */
+    plugins: [
+      'advlist','autolink','lists','link','image','media','table','code','charmap',
+      'searchreplace','fullscreen','preview','anchor','insertdatetime','hr','visualblocks',
+      'wordcount','quickbars','emoticons','nonbreaking','directionality'
+    ],
+
+    /* Toolbar – klidně rozděl do více řádků */
+    toolbar1: 'undo redo | formatselect fontselect fontsizeselect | bold italic underline strikethrough | forecolor backcolor | removeformat',
+    toolbar2: 'alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | link image media | table | hr charmap emoticons | code fullscreen preview',
+    toolbar_mode: 'wrap', // když se nevejde, zalomí se
+
+    /* Quickbars – výběrový plovoucí toolbar */
+    quickbars_selection_toolbar: 'bold italic underline | forecolor backcolor | link quickimage quicktable',
+    quickbars_insert_toolbar: 'hr table',
+
+    /* Formáty (obsah nabídky Format + rozbalovač Format) */
+    style_formats: [
+      { title: 'Nadpis sekce', block: 'h2' },
+      { title: 'Podnadpis', block: 'h3' },
+      { title: 'Zvýraznění', inline: 'span', classes: 'hl' },
+      { title: 'Citace', block: 'blockquote', wrapper: true }
+    ],
+
+    /* Obrázky (upload už máš přes /admin/upload_tinymce.php) */
+    images_upload_url: '/admin/upload_tinymce.php',
+    automatic_uploads: true,
+    file_picker_types: 'image',
+    image_caption: true,
+
+    /* Volitelné – limity / čistší HTML */
+    valid_children: '+body[style]',
+    valid_elements: '*[*]',
+    remove_trailing_brs: true,
+    convert_urls: false,
+
+    /* Lokalizace (až nahraješ /assets/tinymce7/langs/cs.js) */
+    // language: 'cs',
+    // language_url: '/assets/tinymce7/langs/cs.js',
+  });
+});
+</script>
+
+
+
+</body>
+</html>

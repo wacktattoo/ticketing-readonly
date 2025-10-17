@@ -1,0 +1,14 @@
+/.idea/
+/.vscode/
+/.github/
+/node_modules/
+/vendor/
+/tmp/
+/cache/
+*.log
+*.sql
+.env
+config.php
+inc/db.php
+deploy*.*
+Watch-Deploy.ps1

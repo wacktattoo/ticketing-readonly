@@ -1,0 +1,38 @@
+# Zapnout mod_rewrite
+RewriteEngine On
+
+# =========================
+# 1) Vynutit HTTPS (i za proxy)
+# =========================
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# =========================
+# 2) Kanonická doména (bez-www)
+#    -> pokud chceš www, viz varianta níže
+# =========================
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# Základní zabezpečení
+Options -Indexes
+
+# =========================
+# 3) APLIKAČNÍ PRAVIDLA
+# =========================
+
+# Povolit přímo načítat soubory v /assets (bez dalších přepisů)
+# (Pozn.: HTTPS/host přesměrování už proběhlo výš)
+RewriteRule ^assets/ - [L]
+
+# Admin přístup (volitelně)
+RewriteRule ^admin$ admin/index.php [L]
+
+# Veřejná akce: /e/slug
+RewriteRule ^e/([a-zA-Z0-9-]+)$ public/event.php?slug=$1 [L]
+
+# Přehled akcí
+RewriteRule ^events$ public/events.php [L]
+
+# (jiné .php soubory nech podle defaultu Apache)

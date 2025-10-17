@@ -1,0 +1,36 @@
+/* /admin/assets/admin-base.css — globální admin theme (bez kolizí s public) */
+:root{
+  --bg:#f5f7fb; --text:#0b1220; --muted:#5b677a; --border:#e7ecf5;
+  --blue:#2563eb; --blue-600:#1d4ed8; --blue-50:#eff6ff; --radius:12px;
+}
+
+/* Základní text / pozadí (jen admin) */
+body.admin-body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  margin:0;
+}
+
+/* Tlačítka (shodná se starou verzí) */
+button, .btn{
+  padding:10px 14px; border-radius:10px; border:1px solid var(--blue);
+  color:var(--blue); background:#fff; cursor:pointer; text-decoration:none;
+  font-weight:600; transition:.2s; display:inline-flex; align-items:center; gap:8px;
+}
+button:hover, .btn:hover{ background:var(--blue); color:#fff; border-color:var(--blue); }
+.btn.primary{ background:var(--blue); color:#fff; border-color:var(--blue); }
+.btn.primary:hover{ background:var(--blue-600); border-color:var(--blue-600); }
+.btn.outline{ background:#fff; color:var(--blue); border-color:var(--blue); }
+.btn.outline:hover{ background:var(--blue); color:#fff; }
+
+/* Tabulky – jemné */
+.table{ width:100%; border-collapse:collapse; background:#fff;
+  border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.table th, .table td{ padding:10px 12px; border-bottom:1px solid var(--border); text-align:left; }
+.table th{ background:#f8fbff; color:#334155; font-weight:700; }
+
+/* Klikatelné prvky = ručička */
+button,.btn,.btn-ghost,.btn-action,.btn-delete,.btn-copy-link,.btn-zobrazit,
+a[href],[role="button"]{ cursor:pointer; }
+button[disabled],[aria-disabled="true"]{ cursor:not-allowed; }

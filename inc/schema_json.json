@@ -1,0 +1,12 @@
+{
+  "width": 800,
+  "height": 500,
+  "seats": [
+    { "id":"A-1", "x":100, "y":120, "tier":"A" },
+    { "id":"A-2", "x":140, "y":120, "tier":"A" }
+  ],
+  "tiers": {
+    "A": { "name":"Sektor A", "price_cents":690, "currency":"CZK" },
+    "B": { "name":"Sektor B", "price_cents":490, "currency":"CZK" }
+  }
+}
